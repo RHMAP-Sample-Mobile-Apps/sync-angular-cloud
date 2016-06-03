@@ -18,14 +18,15 @@ app.use(mbaasExpress.fhmiddleware());
 app.use(mbaasExpress.errorHandler());
 
 // This maps MBaaS Service guids to URLs during local development
+process.env.FH_USE_LOCAL_DB = true;
 process.env.FH_SERVICE_MAP = JSON.stringify({
-  'fake-service-guid': 'http://127.0.0.1:9001'
+  'afake-service-guid-12345': 'http://127.0.0.1:9001'
 });
 
 // Proxy sync calls to an MBaaS Service with guid "fake-service-guid"
 // Locally these calls are proxied to http://127.0.0.1:9001
 var serviceSync = mbaasSync({
-  guid: 'fake-service-guid',
+  guid: 'afake-service-guid-12345',
   timeout: 20000
 });
 
