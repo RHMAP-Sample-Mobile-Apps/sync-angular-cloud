@@ -10,7 +10,7 @@ by a RESTful API running on an MBaaS Service.
 Assuming you have node.js and npm installed, you can run this locally like so:
 
 ```
-sync-angular-cloud
+cd sync-angular-cloud
 npm install
 npm start
 ```
