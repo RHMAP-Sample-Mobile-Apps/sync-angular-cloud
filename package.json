@@ -1,6 +1,7 @@
 {
   "name": "fh-rest-sync-proxy-template",
   "version": "0.1.0",
+  "license": "mit",
   "description": "Sample Cloud Application demonstrating the use of fh-rest-sync-proxy",
   "main": "application.js",
   "scripts": {
