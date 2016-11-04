@@ -1,11 +1,11 @@
 'use strict';
 
-var express = require('express')
-  , log = require('fh-bunyan').getLogger(__filename)
-  , mbaasApi = require('fh-mbaas-api')
-  , mbaasExpress = mbaasApi.mbaasExpress()
-  , mbaasSync = require('fh-rest-sync-proxy')
-  , app = module.exports = express();
+const express = require('express');
+const log = require('fh-bunyan').getLogger(__filename);
+const mbaasApi = require('fh-mbaas-api');
+const mbaasExpress = mbaasApi.mbaasExpress();
+const mbaasSync = require('fh-rest-sync-proxy');
+const app = module.exports = express();
 
 // Note: the order which we add middleware to Express here is important!
 app.use('/sys', mbaasExpress.sys([]));
@@ -32,14 +32,13 @@ var serviceSync = mbaasSync({
 
 serviceSync.initDataset('users', {
   // Place the usual mbaasApi.sync options here
-  sync_frequency: 60,
   logLevel: 'warn'
 }, function (err) {
   if (err) {
     throw err;
   }
 
-  var port = process.env.FH_PORT || process.env.VCAP_APP_PORT || 8001;
+  const port = process.env.FH_PORT || process.env.VCAP_APP_PORT || 8001;
   app.listen(port, function() {
     log.info('App started at: %s on port: %s', new Date(), port);
   });
