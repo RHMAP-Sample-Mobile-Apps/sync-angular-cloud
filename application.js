@@ -38,7 +38,7 @@ serviceSync.initDataset('users', {
     throw err;
   }
 
-  const port = process.env.FH_PORT || process.env.VCAP_APP_PORT || 8001;
+const port = process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || process.env.VCAP_APP_PORT || 8001;
   app.listen(port, function() {
     log.info('App started at: %s on port: %s', new Date(), port);
   });
